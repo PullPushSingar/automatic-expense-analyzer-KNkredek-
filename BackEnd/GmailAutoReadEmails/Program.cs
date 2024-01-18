@@ -38,10 +38,25 @@ class Program
             ApplicationName = ApplicationName,
         });
 
+        DateTime today = DateTime.UtcNow;
+        Console.WriteLine($"Today: {today}");
         
+   
+        
+        string queryDate = today.ToString("yyyy/MM/dd").Replace(".","/");
         UsersResource.MessagesResource.ListRequest request = service.Users.Messages.List("me");
+        string queryDatePlusOne = today.AddDays(1).ToString("yyyy/MM/dd").Replace(".", "/");
 
         
+        Console.WriteLine(queryDate);
+        Console.WriteLine(queryDatePlusOne);
+ 
+        request.Q = $"after:{queryDate} before:{queryDatePlusOne}";
+       
+
+
+
+
         IList<Message> messages = request.Execute().Messages;
         Console.WriteLine("Messages:");
         if (messages != null && messages.Count > 0)
@@ -60,9 +75,11 @@ class Program
                             if (part.MimeType == "text/html" && part.Body.AttachmentId != null)
                             {
                                 string htmlContent = await GetAttachmentHtml(service, "me", messageItem.Id, part.Body.AttachmentId);
-                                Console.WriteLine("HTML content of the attachment:");
-                                Console.WriteLine(htmlContent);
-                               
+                                if (!string.IsNullOrEmpty(htmlContent))
+                                {
+                                    ProcessEmailHtmlContent(htmlContent);
+                                }
+
                             }
                         }
                     }
@@ -102,15 +119,46 @@ class Program
         var doc = new HtmlDocument();
         doc.LoadHtml(htmlContent);
 
-        
-        var nodes = doc.DocumentNode.SelectNodes("//a[@href]");
+      
 
-        if (nodes != null)
+       
+        var dateNode = doc.DocumentNode.SelectSingleNode("//h5[@class='znaki']");
+        if (dateNode != null)
         {
-            foreach (var node in nodes)
+            var dateText = dateNode.InnerText;
+            
+            var parts = dateText.Split(new[] { " - " }, StringSplitOptions.None);
+            var datePart = parts.Length > 0 ? parts[0].Trim() : string.Empty;
+
+            
+            if (DateTime.TryParse(datePart, out DateTime extractedDate))
             {
-                Console.WriteLine($"Link found: {node.Attributes["href"].Value}");
-                
+                Console.WriteLine("Data: " + extractedDate.ToString("yyyy-MM-dd"));
+            }
+            else
+            {
+                Console.WriteLine("Nie udało się wydobyć daty.");
+            }
+        }
+
+        
+        var operationRows = doc.DocumentNode.SelectNodes("//tr[td[@class='data']]");
+        if (operationRows != null)
+        {
+            foreach (var row in operationRows)
+            {
+                var cells = row.SelectNodes("td[@class='data']");
+                if (cells != null && cells.Count >= 2)
+                {
+                    var timeNode = cells[0]; 
+                    var descriptionNode = cells[1]; 
+
+                    var time = timeNode.InnerText.Trim();
+                    var description = descriptionNode.InnerText.Trim();
+
+                    Console.WriteLine($"Czas operacji: {time}");
+                    Console.WriteLine($"Opis operacji: {description}");
+                }
             }
         }
     }
