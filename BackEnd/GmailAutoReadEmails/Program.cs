@@ -9,6 +9,8 @@ using System.Threading;
 using System.Text;
 using System.Net.Http;
 using HtmlAgilityPack;
+using System.Globalization;
+using System.Text.RegularExpressions;
 
 class Program
 {
@@ -51,7 +53,8 @@ class Program
         Console.WriteLine(queryDate);
         Console.WriteLine(queryDatePlusOne);
  
-        request.Q = $"after:{queryDate} before:{queryDatePlusOne}";
+        request.Q = $"after:{"2024/01/01"} before:{"2024/02/01"}";
+      //  request.Q = $"after:{queryDate} before:{queryDatePlusOne}";
        
 
 
@@ -118,9 +121,10 @@ class Program
     {
         var doc = new HtmlDocument();
         doc.LoadHtml(htmlContent);
+        DateTime todayDate = DateTime.UtcNow;
 
       
-
+        List<Operation> operations = new List<Operation>();
        
         var dateNode = doc.DocumentNode.SelectSingleNode("//h5[@class='znaki']");
         if (dateNode != null)
@@ -133,7 +137,8 @@ class Program
             
             if (DateTime.TryParse(datePart, out DateTime extractedDate))
             {
-                Console.WriteLine("Data: " + extractedDate.ToString("yyyy-MM-dd"));
+              //  Console.WriteLine("Data: " + extractedDate.ToString("yyyy-MM-dd"));
+                todayDate = extractedDate;
             }
             else
             {
@@ -156,11 +161,19 @@ class Program
                     var time = timeNode.InnerText.Trim();
                     var description = descriptionNode.InnerText.Trim();
 
-                    Console.WriteLine($"Czas operacji: {time}");
-                    Console.WriteLine($"Opis operacji: {description}");
+                    //Console.WriteLine($"Czas operacji: {time}");
+                    //Console.WriteLine($"Opis operacji: {description}");
+                    operations.Add(new Operation(todayDate, time, description));
                 }
             }
         }
+
+        foreach (var operation in operations) {
+            Console.WriteLine(operation.ToString());
+
+        }
+        
+        
     }
 
     static void ExtractAndProcessHtmlFromEmail(GmailService service, Message emailInfoResponse)
