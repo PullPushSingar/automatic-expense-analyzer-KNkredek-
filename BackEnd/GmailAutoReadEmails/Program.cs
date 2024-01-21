@@ -174,7 +174,7 @@ class Program
             Console.WriteLine(operation.ToString());
 
 
-            string connectionString = "Server=tcp:exapnse-analyzer-freedb.database.windows.net,1433;Initial Catalog=expanse-analyzer-freeDB;Persist Security Info=False;User ID=hubert65119688;Password=%SytnCHxBa5rW81oj$;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+            string connectionString = "your connection string";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 string sql = "INSERT INTO Operations (OperationDate, OperationTime, OperationAmount, AccountAmountAfterOperation, Description) VALUES (@OperationDate, @OperationTime, @OperationAmount, @AccountAmountAfterOperation, @Description)";
