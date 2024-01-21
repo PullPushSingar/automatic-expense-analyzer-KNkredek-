@@ -173,8 +173,8 @@ class Program
         foreach (var operation in operations) {
             Console.WriteLine(operation.ToString());
 
-            
-            string connectionString = "yourconnectionstring";
+
+            string connectionString = "Server=tcp:exapnse-analyzer-freedb.database.windows.net,1433;Initial Catalog=expanse-analyzer-freeDB;Persist Security Info=False;User ID=hubert65119688;Password=%SytnCHxBa5rW81oj$;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 string sql = "INSERT INTO Operations (OperationDate, OperationTime, OperationAmount, AccountAmountAfterOperation, Description) VALUES (@OperationDate, @OperationTime, @OperationAmount, @AccountAmountAfterOperation, @Description)";
