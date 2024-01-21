@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -74,6 +75,7 @@ public class Operation
             Console.WriteLine($"Wystąpił błąd podczas przetwarzania operacji: {ex.Message}");
         }
 
+    
     }
 
     public override string ToString()

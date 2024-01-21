@@ -11,6 +11,8 @@ using System.Net.Http;
 using HtmlAgilityPack;
 using System.Globalization;
 using System.Text.RegularExpressions;
+using System.Data.SqlClient;
+using static System.Net.WebRequestMethods;
 
 class Program
 {
@@ -171,7 +173,28 @@ class Program
         foreach (var operation in operations) {
             Console.WriteLine(operation.ToString());
 
+            
+            string connectionString = "yourconnectionstring";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string sql = "INSERT INTO Operations (OperationDate, OperationTime, OperationAmount, AccountAmountAfterOperation, Description) VALUES (@OperationDate, @OperationTime, @OperationAmount, @AccountAmountAfterOperation, @Description)";
+
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    command.Parameters.AddWithValue("@OperationDate", operation.OperationDate);
+                    command.Parameters.AddWithValue("@OperationTime", operation.OperationTime);
+                    command.Parameters.AddWithValue("@OperationAmount", operation.OperationAmount);
+                    command.Parameters.AddWithValue("@AccountAmountAfterOperation", operation.AccountAmountAfterOperation);
+                    command.Parameters.AddWithValue("@Description", operation.Description);
+
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+            }
+
         }
+
+
         
         
     }

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "opOCb5k/zA3Y9ew3X3fE2vFSCpin/eI34nCknENmJ0A+e5Se/uY8UKfjo6eQWSbdDH9Db2LWc2/KheEtpOVyEQ==",
+  "dgSpecHash": "Ntfi6+1C3MO0umtF7kzOlUKYJFhpox3urWbk+fPyhn2M1wy2lz2GnbXnpMWMlA3n4+aqgbOM3JMaVXXa7PmCIA==",
   "success": true,
   "projectFilePath": "C:\\Users\\huber\\Desktop\\automatic-expense-analyzer-KNkredek-\\BackEnd\\GmailAutoReadEmails\\GmailAutoReadEmails.csproj",
   "expectedPackageFiles": [
@@ -9,9 +9,18 @@
     "C:\\Users\\huber\\.nuget\\packages\\google.apis.core\\1.66.0\\google.apis.core.1.66.0.nupkg.sha512",
     "C:\\Users\\huber\\.nuget\\packages\\google.apis.gmail.v1\\1.66.0.3287\\google.apis.gmail.v1.1.66.0.3287.nupkg.sha512",
     "C:\\Users\\huber\\.nuget\\packages\\htmlagilitypack\\1.11.57\\htmlagilitypack.1.11.57.nupkg.sha512",
+    "C:\\Users\\huber\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
+    "C:\\Users\\huber\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\huber\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
+    "C:\\Users\\huber\\.nuget\\packages\\runtime.native.system.data.sqlclient.sni\\4.7.0\\runtime.native.system.data.sqlclient.sni.4.7.0.nupkg.sha512",
+    "C:\\Users\\huber\\.nuget\\packages\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
+    "C:\\Users\\huber\\.nuget\\packages\\runtime.win-x64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
+    "C:\\Users\\huber\\.nuget\\packages\\runtime.win-x86.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\huber\\.nuget\\packages\\system.codedom\\7.0.0\\system.codedom.7.0.0.nupkg.sha512",
-    "C:\\Users\\huber\\.nuget\\packages\\system.management\\7.0.2\\system.management.7.0.2.nupkg.sha512"
+    "C:\\Users\\huber\\.nuget\\packages\\system.data.sqlclient\\4.8.6\\system.data.sqlclient.4.8.6.nupkg.sha512",
+    "C:\\Users\\huber\\.nuget\\packages\\system.management\\7.0.2\\system.management.7.0.2.nupkg.sha512",
+    "C:\\Users\\huber\\.nuget\\packages\\system.security.accesscontrol\\4.7.0\\system.security.accesscontrol.4.7.0.nupkg.sha512",
+    "C:\\Users\\huber\\.nuget\\packages\\system.security.principal.windows\\4.7.0\\system.security.principal.windows.4.7.0.nupkg.sha512"
   ],
   "logs": []
 }

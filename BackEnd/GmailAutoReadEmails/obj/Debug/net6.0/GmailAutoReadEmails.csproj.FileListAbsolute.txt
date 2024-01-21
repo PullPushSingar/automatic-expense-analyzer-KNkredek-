@@ -24,3 +24,9 @@ C:\Users\huber\Desktop\automatic-expense-analyzer-KNkredek-\BackEnd\GmailAutoRea
 C:\Users\huber\Desktop\automatic-expense-analyzer-KNkredek-\BackEnd\GmailAutoReadEmails\obj\Debug\net6.0\GmailAutoReadEmails.genruntimeconfig.cache
 C:\Users\huber\Desktop\automatic-expense-analyzer-KNkredek-\BackEnd\GmailAutoReadEmails\obj\Debug\net6.0\ref\GmailAutoReadEmails.dll
 C:\Users\huber\Desktop\automatic-expense-analyzer-KNkredek-\BackEnd\GmailAutoReadEmails\bin\Debug\net6.0\HtmlAgilityPack.dll
+C:\Users\huber\Desktop\automatic-expense-analyzer-KNkredek-\BackEnd\GmailAutoReadEmails\bin\Debug\net6.0\System.Data.SqlClient.dll
+C:\Users\huber\Desktop\automatic-expense-analyzer-KNkredek-\BackEnd\GmailAutoReadEmails\bin\Debug\net6.0\runtimes\win-arm64\native\sni.dll
+C:\Users\huber\Desktop\automatic-expense-analyzer-KNkredek-\BackEnd\GmailAutoReadEmails\bin\Debug\net6.0\runtimes\win-x64\native\sni.dll
+C:\Users\huber\Desktop\automatic-expense-analyzer-KNkredek-\BackEnd\GmailAutoReadEmails\bin\Debug\net6.0\runtimes\win-x86\native\sni.dll
+C:\Users\huber\Desktop\automatic-expense-analyzer-KNkredek-\BackEnd\GmailAutoReadEmails\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\huber\Desktop\automatic-expense-analyzer-KNkredek-\BackEnd\GmailAutoReadEmails\bin\Debug\net6.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
