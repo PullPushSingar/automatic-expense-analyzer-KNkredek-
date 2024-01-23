@@ -23,7 +23,7 @@ const App = () => {
     datasets: [{
       label: 'Saldo po operacji (tydzień)',
       data: [],
-      // inne ustawienia wykresu
+     
     }],
   });
   const [weeklyChartData, setWeeklyChartData] = useState({
@@ -31,7 +31,7 @@ const App = () => {
     datasets: [{
       label: 'Saldo po operacji (tydzień)',
       data: [],
-      // inne ustawienia wykresu
+      
     }],
   });
   const [monthlyChartData, setMonthlyChartData] = useState({
@@ -39,7 +39,7 @@ const App = () => {
     datasets: [{
       label: 'Saldo po operacji (miesiąc)',
       data: [],
-      // inne ustawienia wykresu
+      
     }],
   });
 
@@ -49,7 +49,7 @@ const App = () => {
   
     operations.forEach((operation) => {
       const date = new Date(operation.operationDate);
-      const key = date.toISOString().split('T')[0]; // Klucz w formacie YYYY-MM-DD
+      const key = date.toISOString().split('T')[0]; 
   
       if (!days[key]) {
         days[key] = {
@@ -80,18 +80,18 @@ const App = () => {
       if (!weeks[weekKey]) {
         weeks[weekKey] = {
           lastOperationAmount: null,
-          lastOperationDateTime: new Date(0) // Ustawienie bardzo starej daty jako początkowej
+          lastOperationDateTime: new Date(0) 
         };
       }
   
-      // Sprawdzanie, czy bieżąca operacja jest późniejsza niż ostatnio zapisana w tym tygodniu
+      
       if (date >= weeks[weekKey].lastOperationDateTime) {
         weeks[weekKey].lastOperationAmount = operation.accountAmountAfterOperation;
         weeks[weekKey].lastOperationDateTime = date;
       }
     });
   
-    // Mapowanie obiektu tygodni do tablicy
+    
     return Object.keys(weeks).sort().reverse().map(weekKey => ({
       week: weekKey,
       lastOperationAmount: weeks[weekKey].lastOperationAmount
@@ -104,23 +104,23 @@ const App = () => {
     operations.forEach((operation) => {
       const date = new Date(operation.operationDate);
       const monthStart = startOfMonth(date);
-      const monthKey = monthStart.toISOString().split('T')[0].substring(0, 7); // Klucz w formacie 'YYYY-MM'
+      const monthKey = monthStart.toISOString().split('T')[0].substring(0, 7); 
   
       if (!months[monthKey]) {
         months[monthKey] = {
           lastOperationAmount: null,
-          lastOperationDateTime: new Date(0) // Ustawienie bardzo starej daty jako początkowej
+          lastOperationDateTime: new Date(0) 
         };
       }
   
-      // Sprawdzanie, czy bieżąca operacja jest późniejsza niż ostatnio zapisana w tym miesiącu
+     
       if (date >= months[monthKey].lastOperationDateTime) {
         months[monthKey].lastOperationAmount = operation.accountAmountAfterOperation;
         months[monthKey].lastOperationDateTime = date;
       }
     });
   
-    // Mapowanie obiektu miesięcy do tablicy
+   
     return Object.keys(months).sort().reverse().map(monthKey => ({
       month: monthKey,
       lastOperationAmount: months[monthKey].lastOperationAmount
@@ -135,9 +135,9 @@ const App = () => {
           const allOperations = response.data.filter(operation => operation.operationAmount !== 0);
           setOperations(allOperations);
   
-          // Tutaj możesz dodać logikę do generowania weeklyData i monthlyData
+          
   
-          // Przykład generowania danych dla wykresów
+          
           const dailyData = groupByDay(allOperations);
           const weeklyData = groupByWeek(allOperations);
           const monthlyData = groupByMonth(allOperations);
@@ -179,7 +179,7 @@ const App = () => {
             }],
           });
 
-          // Aktualizacja danych wykresu tygodniowego
+          
           setWeeklyChartData({
             labels: weeklyData.map(data => data.week),
             datasets: [{
@@ -191,9 +191,9 @@ const App = () => {
             }],
           });
           
-          // Aktualizacja danych wykresu miesięcznego
+          
           setMonthlyChartData({
-            labels: monthlyData.map(data => data.month), // Użyj 'month' zamiast 'label'
+            labels: monthlyData.map(data => data.month), 
             datasets: [{
               label: 'Saldo po operacji (miesiąc)',
               data: monthlyData.map(data => data.lastOperationAmount),
@@ -211,7 +211,7 @@ const App = () => {
       fetchOperations();
     }, []); 
 
-  // Funkcja pomocnicza do wyboru tekstu i koloru w zależności od kwoty
+  
   const getAmountDetails = (amount) => {
     return amount < 0
       ? { text: "Obciążenie", color: 'red' }
